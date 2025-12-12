@@ -468,13 +468,13 @@ def run_validation(model, val_loader, device, epoch, cfg, log, save_visuals=True
 
     with torch.no_grad():
         for batch_idx, batch in enumerate(val_loader, start=1):
-            groundTruth = batch["groundTruth"]
-            timeSeries_noisy_original = batch["noisy_TimeSeries"]
-            mask = batch["mask"]
-            time_stamps_original = batch["time_stamps"]
+            groundTruth = batch["groundTruth"].to(device)
+            timeSeries_noisy_original = batch["noisy_TimeSeries"].to(device)
+            mask = batch["mask"].to(device)
+            time_stamps_original = batch["time_stamps"].to(device)
 
-            div_term_cpu = batch["div_term"]
-            min_value_cpu = batch["min_value"]
+            div_term_cpu = batch["div_term"].to(device)
+            min_value_cpu = batch["min_value"].to(device)
 
             # mask_indices = torch.where(mask[0] == True)[0]
             # timeSeries_noisy = timeSeries_noisy_original[:, mask_indices].unsqueeze(-1)
@@ -488,9 +488,9 @@ def run_validation(model, val_loader, device, epoch, cfg, log, save_visuals=True
             min_value = min_value_cpu.unsqueeze(-1).unsqueeze(-1)
             groundTruth = groundTruth.unsqueeze(-1)
 
-            # Inverse transform from [-1, 1] back to original scale
-            pred_x = ((pred_x * 0.5) + 0.5) * div_term + min_value
-            groundTruth = ((groundTruth * 0.5) + 0.5) * div_term + min_value
+            # Inverse transform from [0, 1] back to original scale
+            pred_x = pred_x * div_term + min_value
+            groundTruth = groundTruth * div_term + min_value
 
             mae = torch.abs(pred_x - groundTruth).mean()
             rmse = torch.sqrt(((pred_x - groundTruth) ** 2).mean())
