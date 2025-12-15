@@ -370,8 +370,8 @@ class ContiFormer(nn.Module):
         if time_interval is not None and len(time_interval) > 1:
             share = 0.15
             data_points_count = len(time_interval)
-            extra_data_points_count_low = data_points_count * share
-            extra_data_points_count_high = data_points_count * (1-share)
+            extra_data_points_count_low = int(data_points_count * share)
+            extra_data_points_count_high = int(data_points_count * (1-share))
             dt = (time_interval[1:] - time_interval[:-1]).unsqueeze(-1)
             dt = torch.clamp(dt, min=1e-6)  # Avoid division by zero
             pred_grad = (pred_x[:, 1:] - pred_x[:, :-1]) / dt
