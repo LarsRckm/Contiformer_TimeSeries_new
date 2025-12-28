@@ -188,10 +188,18 @@ def remove_parts_of_graph_encoder_contiformer(x_array, number_masking_tokens, of
         mask[position:position+mask_width] = 1
         number_masking_tokens = number_masking_tokens - mask_width
 
+        counter = 0
+        offset = offset
+
         while number_masking_tokens != 0:
             possible_locations = []
             while len(possible_locations) == 0:
+                counter += 1
                 mask_width = np.random.randint(0, number_masking_tokens+1)
+                if(counter > 100):
+                    counter = 0
+                    offset = 0
+                    mask_width = 1
                 if mask_width != 0 and mask_width < 150:
                     free_mask_width = start_mask[1] - start_mask[0]
                     if (free_mask_width-2*offset) > mask_width:

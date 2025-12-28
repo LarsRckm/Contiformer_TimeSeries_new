@@ -55,8 +55,10 @@ class MultiHeadAttention(nn.Module):
         k = self.w_ks(k, t).view(sz_b, len_k, len_k, -1, n_head, d_k)
         v = self.w_vs(v, t).view(sz_b, len_v, len_v, -1, n_head, d_k)
 
+
         # Transpose for attention dot product: b x n x lq x dv
         q, k, v = q.permute(0, 4, 1, 2, 3, 5), k.permute(0, 4, 1, 2, 3, 5), v.permute(0, 4, 1, 2, 3, 5)
+        # q, k, v = q.permute(0, 2, 1, 3), k.permute(0, 2, 1, 3), v.permute(0, 2, 1, 3)
 
         if mask is not None:
             mask = mask.unsqueeze(1)  # For head axis broadcasting.
@@ -142,6 +144,7 @@ class ScaledDotProductAttention(nn.Module):
 
     def forward(self, q, k, v, mask=None):
         # if q is ODELinear, attn = (q.transpose(2, 3).flip(dims=[-2]) / self.temperature * k).sum(dim=-1).sum(dim=-1)
+        #(batch, n_head, len_q, len_k, 3, d_k)
         attn = (q / self.temperature * k).sum(dim=-1)
         attn = torch.sigmoid(self.g(attn.unsqueeze(-1))).squeeze(-1)        
         attn = attn.sum(dim=-1)

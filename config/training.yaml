@@ -29,7 +29,7 @@ n_head: 4  # number of attention heads
 d_k: 16  # dimension of each attention head
 d_v: 16  # dimension of each attention head
 actfn: softplus  # activation function for ODE: softplus, tanh, relu
-layer_type_ode: concat  # odeformerlayer, transformerlayer
+layer_type_ode: concatsquash  # odeformerlayer, transformerlayer
 zero_init_ode: true  # zero-initialize ODE layer last linear
 add_pe: false  # add positional encoding to input
 normalize_before: false  # use pre-norm transformer layers
@@ -68,7 +68,7 @@ y_lim_low: 10  # minimum starting value for generated series
 y_lim_high: 10000  # maximum starting value for generated series
 train_count: 1000  # number of synthetic training series
 val_count: 1  # number of synthetic validation series
-number_x_values: 100  # length (timesteps) of each series
+number_x_values: 1000  # length (timesteps) of each series
 batch_size: 10  # training batch size
 random_number_range_distribution: norm  # distribution for random coefficients
 random_number_range_mean: 0  # mean for random coefficient sampling
@@ -78,7 +78,7 @@ spline_value_high: 1100000  # upper bound for spline amplitude sampling
 vocab_size: 100000  # range for token-like noise injection
 noise_std_distribution: norm  # distribution for observation noise
 noise_std_mean: 0  # mean of observation noise
-noise_std_std: 0.15  # std dev of observation noise
+noise_std_std: 0.1  # std dev of observation noise
 interpolation_min_width: 10  # smallest gap length removed from series
 interpolation_max_width: 100  # largest gap length removed from series
 interpolation_max_count: 10  # maximum number of gaps removed
