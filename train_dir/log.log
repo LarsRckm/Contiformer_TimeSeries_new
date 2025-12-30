@@ -909,3 +909,65 @@
 [2025-12-28 19:29:29,746][./train_dir\log][INFO] - Using cosine learning rate scheduler
 [2025-12-28 19:31:34,593][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
 [2025-12-28 19:31:42,911][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:07:18,833][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-29 19:07:18,851][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-29 19:07:18,857][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:08:57,576][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-29 19:09:14,711][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-29 19:09:14,741][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:11:32,862][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-29 19:11:32,877][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-29 19:11:32,884][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:15:43,917][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-29 19:15:43,923][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-29 19:15:43,937][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:16:06,848][./train_dir\log][INFO] - Validation: Epoch: 0, MAE: 17.2454, RMSE: 19.5823, MAPE: 3.65%
+[2025-12-29 19:16:28,574][./train_dir\log][INFO] - Validation: Epoch: 1, MAE: 3.6182, RMSE: 4.2685, MAPE: 0.24%
+[2025-12-29 19:16:44,018][./train_dir\log][INFO] - Validation: Epoch: 2, MAE: 9.1434, RMSE: 11.1995, MAPE: 27.11%
+[2025-12-29 19:17:02,629][./train_dir\log][INFO] - Validation: Epoch: 3, MAE: 1542.1689, RMSE: 2090.2086, MAPE: 78.68%
+[2025-12-29 19:17:18,120][./train_dir\log][INFO] - Validation: Epoch: 4, MAE: 0.1091, RMSE: 0.1221, MAPE: 30.25%
+[2025-12-29 19:17:39,762][./train_dir\log][INFO] - Validation: Epoch: 5, MAE: 4.0208, RMSE: 4.7082, MAPE: 0.05%
+[2025-12-29 19:17:58,176][./train_dir\log][INFO] - Validation: Epoch: 6, MAE: 625.0868, RMSE: 711.4386, MAPE: 114.09%
+[2025-12-29 19:18:16,419][./train_dir\log][INFO] - Validation: Epoch: 7, MAE: 13.5404, RMSE: 15.9214, MAPE: 113.56%
+[2025-12-29 19:18:37,156][./train_dir\log][INFO] - Validation: Epoch: 8, MAE: 6.3363, RMSE: 7.6977, MAPE: 0.46%
+[2025-12-29 19:18:49,367][./train_dir\log][INFO] - Validation: Epoch: 9, MAE: 106.1494, RMSE: 133.5785, MAPE: 5.89%
+[2025-12-29 19:19:02,263][./train_dir\log][INFO] - Validation: Epoch: 10, MAE: 1.4320, RMSE: 1.7203, MAPE: 0.01%
+[2025-12-29 19:19:18,053][./train_dir\log][INFO] - Validation: Epoch: 11, MAE: 0.6823, RMSE: 0.9429, MAPE: 1.80%
+[2025-12-29 19:19:33,868][./train_dir\log][INFO] - Validation: Epoch: 12, MAE: 1.8790, RMSE: 2.3425, MAPE: 0.03%
+[2025-12-29 19:20:55,500][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-29 19:20:55,507][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-29 19:20:55,516][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:21:12,013][./train_dir\log][INFO] - Validation: Epoch: 0, MAE: 32.4469, RMSE: 38.8874, MAPE: 135.35%
+[2025-12-29 19:21:30,251][./train_dir\log][INFO] - Validation: Epoch: 1, MAE: 19.2557, RMSE: 22.5165, MAPE: 256.64%
+[2025-12-29 19:21:52,273][./train_dir\log][INFO] - Validation: Epoch: 2, MAE: 2.6217, RMSE: 3.3015, MAPE: 8.82%
+[2025-12-29 19:22:09,047][./train_dir\log][INFO] - Validation: Epoch: 3, MAE: 8.1957, RMSE: 9.4938, MAPE: 104.38%
+[2025-12-29 19:22:24,081][./train_dir\log][INFO] - Validation: Epoch: 4, MAE: 8.3710, RMSE: 10.1680, MAPE: 275.36%
+[2025-12-29 19:22:43,093][./train_dir\log][INFO] - Validation: Epoch: 5, MAE: 3.1767, RMSE: 3.8694, MAPE: 44.75%
+[2025-12-29 19:23:07,169][./train_dir\log][INFO] - Validation: Epoch: 6, MAE: 5.3207, RMSE: 6.9652, MAPE: 2.56%
+[2025-12-29 19:23:27,122][./train_dir\log][INFO] - Validation: Epoch: 7, MAE: 1.4036, RMSE: 1.6302, MAPE: 2.69%
+[2025-12-29 19:23:44,472][./train_dir\log][INFO] - Validation: Epoch: 8, MAE: 9.2406, RMSE: 10.4589, MAPE: 129.16%
+[2025-12-29 19:24:08,887][./train_dir\log][INFO] - Validation: Epoch: 9, MAE: 32.1887, RMSE: 37.5336, MAPE: 113.41%
+[2025-12-29 19:25:28,430][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-29 19:25:28,438][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-29 19:25:28,461][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-29 19:25:45,366][./train_dir\log][INFO] - Validation: Epoch: 0, MAE: 58.3726, RMSE: 66.9269, MAPE: 164.91%
+[2025-12-29 19:25:59,921][./train_dir\log][INFO] - Validation: Epoch: 1, MAE: 89.3880, RMSE: 103.5812, MAPE: 145.39%
+[2025-12-29 19:26:16,606][./train_dir\log][INFO] - Validation: Epoch: 2, MAE: 14.2804, RMSE: 17.1781, MAPE: 386.29%
+[2025-12-29 19:26:35,686][./train_dir\log][INFO] - Validation: Epoch: 3, MAE: 53.4593, RMSE: 64.2963, MAPE: 174.05%
+[2025-12-30 08:50:36,913][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-30 08:50:36,919][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-30 08:50:36,927][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-30 08:51:12,050][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-30 08:51:12,061][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-30 08:51:12,072][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-30 08:51:24,309][./train_dir\log][INFO] - Validation: Epoch: 0, MAE: 32.7308, RMSE: 43.1847, MAPE: 120.36%
+[2025-12-30 08:51:43,274][./train_dir\log][INFO] - Validation: Epoch: 1, MAE: 25.2098, RMSE: 31.3883, MAPE: 97.13%
+[2025-12-30 08:52:06,562][./train_dir\log][INFO] - Validation: Epoch: 2, MAE: 4.4370, RMSE: 5.8133, MAPE: 51.40%
+[2025-12-30 08:52:27,252][./train_dir\log][INFO] - Validation: Epoch: 3, MAE: 24.3693, RMSE: 38.7879, MAPE: 108.82%
+[2025-12-30 08:52:45,554][./train_dir\log][INFO] - Validation: Epoch: 4, MAE: 22.3790, RMSE: 29.0132, MAPE: 84.85%
+[2025-12-30 08:53:11,760][./train_dir\log][INFO] - Validation: Epoch: 5, MAE: 8.5142, RMSE: 13.5757, MAPE: 146.47%
+[2025-12-30 08:53:39,922][./train_dir\log][INFO] - Validation: Epoch: 6, MAE: 24.7642, RMSE: 37.0882, MAPE: 36.42%
+[2025-12-30 08:53:54,823][./train_dir\log][INFO] - Validation: Epoch: 7, MAE: 4.8783, RMSE: 6.1444, MAPE: 44.97%
+[2025-12-30 08:54:17,925][./train_dir\log][INFO] - Validation: Epoch: 8, MAE: 17.5995, RMSE: 29.5809, MAPE: 66.38%
+[2025-12-30 08:54:38,207][./train_dir\log][INFO] - Validation: Epoch: 9, MAE: 49.1250, RMSE: 74.4217, MAPE: 72.87%
+[2025-12-30 08:55:00,210][./train_dir\log][INFO] - Validation: Epoch: 10, MAE: 28.2061, RMSE: 41.4937, MAPE: 66.41%

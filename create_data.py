@@ -202,7 +202,7 @@ def generate_noisy_data_periodic(x_values, vocab_size, noise_std):
     vertical_setoff = uniform(-50.0,50.0)
     horizontal_setoff = uniform(-50.0,50.0)
 
-    y_trend = vertical_scaling * np.sin((x_values+horizontal_setoff)/horizontal_scaling) + vertical_setoff
+    y_trend = vertical_scaling * np.sin(10*(x_values+horizontal_setoff)/horizontal_scaling) + vertical_setoff
 
 
     match noise_std[0]:
@@ -267,7 +267,7 @@ def generate_noisy_data_periodic_sum(x_values, vocab_size, noise_std):
     vertical_setoff = uniform(-500.0,500.0)
     horizontal_setoff = uniform(-500.0,500.0)
 
-    y_trend = vertical_scaling * np.sin((x_values+horizontal_setoff)/horizontal_scaling) + vertical_setoff
+    y_trend = vertical_scaling * np.sin(10*(x_values+horizontal_setoff)/horizontal_scaling) + vertical_setoff
 
     for i in range(randint(5,10)):
         horizontal_scaling = [[10.0,100.0], [-100.0,-10.0]]
@@ -277,7 +277,7 @@ def generate_noisy_data_periodic_sum(x_values, vocab_size, noise_std):
         vertical_setoff = uniform(-50.0,50.0)
         horizontal_setoff = uniform(-50.0,50.0)
 
-        y_trend += vertical_scaling * np.sin((x_values+horizontal_setoff)/horizontal_scaling) + vertical_setoff
+        y_trend += vertical_scaling * np.sin(10*(x_values+horizontal_setoff)/horizontal_scaling) + vertical_setoff
 
     match noise_std[0]:
         case "uni":

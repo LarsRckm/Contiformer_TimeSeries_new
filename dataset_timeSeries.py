@@ -29,9 +29,9 @@ class TimeSeriesDataset_Interpolation_roundedInput(Dataset):
         
         #calculate randomInt to select different time series generating functions
         #discontinuous generators (6,7) are excluded to encourage smoother targets
-        timeSeries = [0,1,2,3,4,5]
-        randomInt = choice(timeSeries)
-        # randomInt = 3
+        # timeSeries = [0,1,2,3,4,5]
+        # randomInt = choice(timeSeries)
+        randomInt = 3
         #0: low order
         #1: low order
         #2: low order
