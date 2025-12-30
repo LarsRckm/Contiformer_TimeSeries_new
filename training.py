@@ -453,9 +453,9 @@ def train_one_epoch(model, optimizer, train_loader, device, epoch, loss_meter, c
                                   'L1': f'{l1_loss.item():.4f}',
                                   'Grad': f'{gradient_loss.item():.4f}',
                                   'batch': f'{batch_idx}/{total}'}, refresh=False)
-        if batch_idx % cfg.log_step == 0 or batch_idx == total:
-            log.info('Training: Iter: %d, batch: %d/%d, running loss: %.4f',
-                     epoch, batch_idx, total, loss_meter.avg)
+        # if batch_idx % cfg.log_step == 0 or batch_idx == total:
+        #     log.info('Training: Iter: %d, batch: %d/%d, running loss: %.4f',
+        #              epoch, batch_idx, total, loss_meter.avg)
 
     return epoch_loss / max(num_batches, 1)
 
