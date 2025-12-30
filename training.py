@@ -435,6 +435,7 @@ def train_one_epoch(model, optimizer, train_loader, device, epoch, loss_meter, c
             weight_l1=getattr(cfg, 'weight_l1', 1.0),
             weight_grad=getattr(cfg, 'weight_grad', 0.5),
             weight_smooth=getattr(cfg, 'weight_smooth', 0.1),
+            log=log,
         )
         loss.backward()
         if getattr(cfg, 'grad_clip', None) and cfg.grad_clip > 0:

@@ -351,7 +351,7 @@ class ContiFormer(nn.Module):
         return enc_output, enc_output[:, -1, :]
 
     def calculate_loss(self, pred_x, target_x, cfg, time_interval,
-                       weight_l1, weight_grad, weight_smooth):
+                       weight_l1, weight_grad, weight_smooth, log):
         """
         Calculate combined loss for denoising and interpolation.
 
@@ -368,6 +368,7 @@ class ContiFormer(nn.Module):
 
         # Primary reconstruction loss
         l1_loss = torch.nn.functional.smooth_l1_loss(pred_x, target_x, reduction="mean")
+        log.info(f"L1 Loss: {l1_loss.item():.6f}")
 
         # Gradient matching loss
         if time_interval is not None and len(time_interval) > 1:
@@ -386,6 +387,7 @@ class ContiFormer(nn.Module):
             denom2 = torch.mean(torch.abs(target_grad[:,:extra_data_points_count_low]) + 1e-8)
             denom3 = torch.mean(torch.abs(target_grad[:,extra_data_points_count_high:]) + 1e-8)
             gradient_loss = num / denom
+            log.info(f"Gradient Loss: {gradient_loss.item():.6f}")
             extra_gradient_loss_low = num2 / denom2
             extra_gradient_loss_high = num3 / denom3
             gradient_loss = gradient_loss + 0.1 * (extra_gradient_loss_low + extra_gradient_loss_high)
@@ -399,6 +401,7 @@ class ContiFormer(nn.Module):
             num = torch.mean(torch.abs(second_deriv_prediction-second_deriv_target))
             denom = torch.mean(torch.abs(second_deriv_target) + 1e-8)   
             smooth_loss = num / denom
+            log.info(f"Smoothness Loss: {smooth_loss.item():.6f}")
         else:
             smooth_loss = torch.tensor(0.0, device=pred_x.device)
 
