@@ -113,7 +113,7 @@ hydra:
     - hydra.mode=RUN
     task: []
   job:
-    name: runValidationExtern
+    name: training
     chdir: false
     override_dirname: ''
     id: ???

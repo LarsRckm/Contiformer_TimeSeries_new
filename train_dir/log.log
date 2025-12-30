@@ -971,3 +971,7 @@
 [2025-12-30 08:54:17,925][./train_dir\log][INFO] - Validation: Epoch: 8, MAE: 17.5995, RMSE: 29.5809, MAPE: 66.38%
 [2025-12-30 08:54:38,207][./train_dir\log][INFO] - Validation: Epoch: 9, MAE: 49.1250, RMSE: 74.4217, MAPE: 72.87%
 [2025-12-30 08:55:00,210][./train_dir\log][INFO] - Validation: Epoch: 10, MAE: 28.2061, RMSE: 41.4937, MAPE: 66.41%
+[2025-12-30 16:58:04,567][./train_dir\log][INFO] - Using cosine learning rate scheduler
+[2025-12-30 16:58:04,628][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-30 16:58:04,630][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-30 16:58:04,630][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
