@@ -584,8 +584,8 @@ def run_validation(model, val_loader, device, epoch, cfg, log, save_visuals=True
 
         y_noise_spline = (y_noise_spline - min_value) / div_term
         y_noise_spline[mask == 1] = 0.0
-        y_noise_spline = torch.tensor(y_noise_spline, dtype=torch.float32).unsqueeze(0).unsqueeze(-1)
-        mask_tensor = torch.tensor(mask, dtype=torch.bool).unsqueeze(0)
+        y_noise_spline = torch.tensor(y_noise_spline, dtype=torch.float32).unsqueeze(0).unsqueeze(-1).to(device)
+        mask_tensor = torch.tensor(mask, dtype=torch.bool).unsqueeze(0).to(device)
 
         pred_x = model(y_noise_spline, mask_tensor, True)[0]
         div_term = torch.tensor(div_term)
