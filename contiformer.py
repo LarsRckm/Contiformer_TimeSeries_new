@@ -8,6 +8,7 @@ from torch import nn
 import torch.nn.functional as F
 from linear import ODELinear, InterpLinear
 from positional_encoding import PositionalEncoding
+import numpy as np
 
 
 class AttrDict(dict):
@@ -225,8 +226,8 @@ class Encoder(nn.Module):
 
         for enc_layer in self.layer_stack:
             enc_output += tem_enc
-            enc_output, _ = enc_layer(enc_output, t, mask=mask)
-        return enc_output
+            enc_output, attn = enc_layer(enc_output, t, mask=mask)
+        return enc_output, attn
 
 
 class EncoderLayer(nn.Module):
@@ -323,7 +324,7 @@ class ContiFormer(nn.Module):
         self.__output_size = d_model
         self.__hidden_size = d_model
 
-    def forward(self, x, is_observed, t=None, mask=None):
+    def forward(self, x, is_observed, store=None, t=None, mask=None):
         if t is None:   # default to regular time series
             t = torch.linspace(0, 1, x.shape[1]).to(x.device)
             t = t.unsqueeze(0).repeat(x.shape[0], 1)
@@ -346,8 +347,16 @@ class ContiFormer(nn.Module):
 
         # print(total_emb[0,:,:])
         
-        enc_output = self.encoder(total_emb, t, mask)
-        enc_output = self.linOut(enc_output)    
+        enc_output, attn = self.encoder(total_emb, t, mask)
+        enc_output = self.linOut(enc_output)
+
+        if(store != None):
+            data = np.load("val_heatmap/attn_data.npz")
+            attn_data = data['attn']
+            attn_data.append(attn)
+            attn_data = torch.cat(attn_data, dim=0)
+            np.savez("val_heatmap/attn_data.npz", attn=attn_data)
+
         return enc_output, enc_output[:, -1, :]
 
     def calculate_loss(self, pred_x, target_x, cfg, time_interval,

@@ -975,3 +975,7 @@
 [2025-12-30 16:58:04,628][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
 [2025-12-30 16:58:04,630][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
 [2025-12-30 16:58:04,630][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4
+[2025-12-31 13:13:40,319][./train_dir\log][INFO] - Using cosine learning rate scheduler
+[2025-12-31 13:13:40,366][./train_dir\log][INFO] - Loaded ckpt from ./train_dir\ckpt_Contiformer.pth
+[2025-12-31 13:13:40,368][./train_dir\log][INFO] - Model: Contiformer | Total params: 224,517 | Trainable: 224,517
+[2025-12-31 13:13:40,369][./train_dir\log][INFO] - Architecture: d_model=64, n_layers=4, n_head=4

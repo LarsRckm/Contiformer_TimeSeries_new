@@ -329,7 +329,7 @@ def build_model_and_optimizer(cfg, device, log):
                         rtol_ode=getattr(cfg, 'rtol', 1e-6),
                         method_ode=getattr(cfg, 'method', "rk4"),
                         linear_type_ode=getattr(cfg, 'linear_type_ode', "inside"),
-                        regularize=getattr(cfg, 'regularize', 256),
+                        regularize=getattr(cfg, 'regularize', True),
                         approximate_method=getattr(cfg, 'approximate_method', "last"),
                         nlinspace=getattr(cfg, 'nlinspace', 3),
                         interpolate_ode=getattr(cfg, 'interpolate_ode', "linear"),
@@ -566,6 +566,56 @@ def run_validation(model, val_loader, device, epoch, cfg, log, save_visuals=True
                 }, save_path)
 
             break
+
+        #validate the timeseries in val_heatmap folder to store attention heatmaps
+        data = np.load("val_heatmap/data_val_heatmap.npz")
+        y_spline = data['y_spline']
+        y_noise_spline = data['y_noise_spline']
+        min_value = data['min_value']
+        max_value = data['max_value']
+        noise_std = data['noise_std']
+        mask = data['mask']
+        div_term = max_value - min_value
+
+        error_data = np.load("val_heatmap/heatmap_data.npz")
+        epoch_storage = error_data["epoch"]
+        mae_storage = error_data["mae"]
+        rmse_storage = error_data["rmse"]
+
+        y_noise_spline = (y_noise_spline - min_value) / div_term
+        y_noise_spline[mask == 1] = 0.0
+        y_noise_spline = torch.tensor(y_noise_spline, dtype=torch.float32).unsqueeze(0).unsqueeze(-1)
+        mask_tensor = torch.tensor(mask, dtype=torch.bool).unsqueeze(0)
+
+        pred_x = model(y_noise_spline, mask_tensor, True)[0]
+        div_term = torch.tensor(div_term)
+        min_value = torch.tensor(min_value)
+        groundTruth = torch.tensor(y_spline)
+
+        # Inverse transform from [0, 1] back to original scale
+        pred_x = pred_x * div_term + min_value
+        # groundTruth = groundTruth * div_term + min_value
+
+        mae = torch.abs(pred_x - groundTruth).mean()
+        rmse = torch.sqrt(((pred_x - groundTruth) ** 2).mean())
+        mae_storage.append(mae.item())
+        rmse_storage.append(rmse.item())
+        epoch_storage.append(epoch)
+
+        # Additional metrics
+        mape = torch.mean(torch.abs((pred_x - groundTruth) / (groundTruth + 1e-8))) * 100
+
+        metrics = {'mae': mae.item(), 'rmse': rmse.item(), 'mape': mape.item()}
+        log.info('Validation Heat Map: Epoch: %d, MAE: %.4f, RMSE: %.4f, MAPE: %.2f%%',
+                    epoch, mae.item(), rmse.item(), mape.item())
+        
+        np.savez(
+        "val_heatmap/heatmap_data.npz",
+        mae=mae_storage,
+        rmse=rmse_storage,
+        epoch=epoch_storage
+    )
+
 
     return metrics
 

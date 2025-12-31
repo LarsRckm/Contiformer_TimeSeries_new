@@ -29,7 +29,7 @@ method: euler
 dropout: 0.1
 grad_clip: 5.0
 linear_type_ode: inside
-regularizee: false
+regularize: false
 approximate_method: last
 nlinspace: 3
 interpolate_ode: linear

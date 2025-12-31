@@ -42,7 +42,7 @@ method: euler  # ODE solver integration method: euler, rk4, dopri5
 dropout: 0.1  # dropout probability in encoder
 grad_clip: 5.0  # max gradient norm for clipping (0 disables)
 linear_type_ode: inside  # linear layer type in ODE func: concat, time
-regularizee: false  # enable regularization losses in ODE solver
+regularize: false  # enable regularization losses in ODE solver
 approximate_method: last  # none, taylor, fourier
 nlinspace: 3  # number of points for approximate methods
 interpolate_ode: linear  # use interpolation-based ODE solver
