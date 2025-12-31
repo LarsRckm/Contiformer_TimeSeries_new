@@ -38,11 +38,11 @@ normalize_before: false  # use pre-norm transformer layers
 atol: 1e-2  # absolute tolerance for ODE solver
 rtol: 1e-4  # relative tolerance for ODE solver
 itol_ode: 1e-2
-method: euler  # ODE solver integration method: euler, rk4, dopri5
+method: rk4  # ODE solver integration method: euler, rk4, dopri5
 dropout: 0.1  # dropout probability in encoder
 grad_clip: 5.0  # max gradient norm for clipping (0 disables)
 linear_type_ode: inside  # linear layer type in ODE func: concat, time
-regularize: false  # enable regularization losses in ODE solver
+regularize: true  # enable regularization losses in ODE solver
 approximate_method: last  # none, taylor, fourier
 nlinspace: 3  # number of points for approximate methods
 interpolate_ode: linear  # use interpolation-based ODE solver
@@ -54,7 +54,7 @@ warmup_epochs: 10  # warmup period for learning rate
 min_lr: 0.0001  # minimum learning rate
 
 # ==================== Loss Function Weights ====================
-weight_l1: 10.0  # weight for L1/smooth L1 loss
+weight_l1: 25.0  # weight for L1/smooth L1 loss
 weight_grad: 1.0  # weight for gradient matching loss
 weight_smooth: 0.5  # weight for smoothness regularization
 use_frequency_loss: false  # add frequency domain loss for denoising
