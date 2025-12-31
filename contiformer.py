@@ -324,7 +324,7 @@ class ContiFormer(nn.Module):
         self.__output_size = d_model
         self.__hidden_size = d_model
 
-    def forward(self, x, is_observed, store=None, t=None, mask=None):
+    def forward(self, x, is_observed, store=False, t=None, mask=None):
         if t is None:   # default to regular time series
             t = torch.linspace(0, 1, x.shape[1]).to(x.device)
             t = t.unsqueeze(0).repeat(x.shape[0], 1)
@@ -350,7 +350,7 @@ class ContiFormer(nn.Module):
         enc_output, attn = self.encoder(total_emb, t, mask)
         enc_output = self.linOut(enc_output)
 
-        if(store != None):
+        if(store != False):
             data = np.load("val_heatmap/attn_data.npz")
             attn_data = data['attn']
             attn_data.append(attn)
