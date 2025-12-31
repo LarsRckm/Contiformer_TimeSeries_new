@@ -66,7 +66,7 @@ min_delta: 0.0001  # minimum improvement to reset patience
 
 y_lim_low: 10  # minimum starting value for generated series
 y_lim_high: 10000  # maximum starting value for generated series
-train_count: 1000  # number of synthetic training series
+train_count: 100  # number of synthetic training series
 val_count: 1  # number of synthetic validation series
 number_x_values: 100  # length (timesteps) of each series
 batch_size: 10  # training batch size
